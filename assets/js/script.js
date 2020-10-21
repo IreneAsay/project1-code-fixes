@@ -44,8 +44,11 @@ $(document).ready(function () {
         // Printing the entire object to console
         console.log(response);
         $("#giphy-modal").modal("show");
-
-        $("#iframeTest").attr("src", response.archived_snapshots.closest.url);
+        var resUrl = response.archived_snapshots.closest.url.split(":");
+        resUrl[0] = "https";
+        
+        
+        $("#iframeTest").attr("src", resUrl.join(":"));
         // REDO THIS SECTION WITH THE DYNAMIC ISBN VALUE
         console.log($("#iframeTest")[0].contentWindow);
       })
